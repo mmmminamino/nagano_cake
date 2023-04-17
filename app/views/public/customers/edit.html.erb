@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <header>
+            <%= render 'list' %>
+        </header>
+        <main>
+            <%= form_with model: @customer do |f| %>
+                <h3>会員情報編集</h3>
+                <p>氏名</p><%= f.text_field :last_name %><%= f.text_field :first_name %>
+                <p>フリガナ</p><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+                <p>郵便番号</p><%= f.text_field :postal_code %>
+                <p>住所</p><%= f.text_field :address %>
+                <p>電話番号</p><%= f.text_field :telephone_number %>
+                <p>メールアドレス</p><%= f.text_field :email %>
+                <%= f.submit '編集内容を保存' %>
+                <%= f.submit '退会' %>
+        </main>
+    </body>
+</html>

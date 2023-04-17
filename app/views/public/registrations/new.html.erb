@@ -2,22 +2,39 @@
   <main>
     <h2>新規会員登録</h2>
     <%= form_with model: @customer do |f| %>
-        <h4>名前</h4>
-          <p>姓</p><%= f.text_field :last_name %><p>名</p><%= f.text_field :first_name %>
-        <h4>フリガナ</h4>
-          <p>姓</p><%= f.text_field :last_name_kana %><p>名</p><%= f.text_field :first_name_kana %>
-        <h4>メールアドレス</h4>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :名前 %>
+          <p>(姓)</p><%= f.text_field :last_name %><p>(名)</p><%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= f.label :フリガナ %>
+          <p>(姓)</p><%= f.text_field :last_name_kana %><p>(名)</p><%= f.text_field :first_name_kana %>
+      </div>
+      <div class="field">
+        <%= f.label :メールアドレス %>
           <%= f.text_field :email %>
-        <h4>郵便番号(ハイフンなし)</h4>
+      </div>
+      <div class="field">
+        <%= f.label :"郵便番号(ハイフンなし)" %>
           <%= f.text_field :postal_code %>
-        <h4>住所</h4>
+      </div>
+      <div class="field">
+        <%= f.label :住所 %>
           <%= f.text_field :address %>
-        <h4>電話番号(ハイフンなし)</h4>
+      </div>
+      <div class="field">
+        <%= f.label :"電話番号(ハイフンなし)" %>
           <%= f.text_field :telephone_number %>
-        <h4>パスワード(6文字以上)</h4>
+      </div>
+      <div class="field">
+        <%= f.label :"パスワード(6文字以上)" %>
           <%= f.text_field :encrypted_password %>
-        <h4>パスワード(確認用)</h4>
+      </div>
+      <div class="field">
+        <%= f.label :"パスワード(確認用)" %>
           <%= f.text_field :encrypted_password %>
+      </div>
         <%= f.submit '新規登録' %>
     <% end %>
     <h2>既に登録済みの方</h2>
