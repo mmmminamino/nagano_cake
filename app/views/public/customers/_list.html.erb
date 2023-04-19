@@ -3,10 +3,10 @@
     <header>
         <div>
             <h1>LOGO</h1>
-            <%= link_to "マイページ", about_path, class: 'btn btn-default' %>
+            <%= link_to "マイページ", customer_path(current_user.id), class: 'btn btn-default' %>
             <%= link_to "商品一覧", items_path, class: 'btn btn-default' %>
             <%= link_to "カート", new_customer_registration_path, class: 'btn btn-default' %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
             <%= form_tag(search_field_tag,:method => 'get') do %>
               <%= text_field_tag :search %>
             <% end %>
