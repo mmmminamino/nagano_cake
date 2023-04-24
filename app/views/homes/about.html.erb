@@ -1,9 +1,21 @@
-<head></head>
-<body>
-    <h1>About</h1>
-    <p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
-    <p>お子様からお年寄りの方までお召し上がりいただけるよう、</p>
-    <p>様々なバリエーションをご用意しております。</p>
-    <p>また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。</p>
-    <p>ぜひご注文ください。</p>
-</body>
+<!DOCTYPE html>
+<html>
+    <header>
+        <div>
+            <h1>LOGO</h1>
+            <%= link_to "マイページ", customer_path(current_customer.id), class: 'btn btn-default' %>
+            <%= link_to "商品一覧", items_path, class: 'btn btn-default' %>
+            <%= link_to "カート", new_customer_registration_path, class: 'btn btn-default' %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </div>
+    </header>
+    <head></head>
+    <body>
+        <h1>About</h1>
+        <p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
+        <p>お子様からお年寄りの方までお召し上がりいただけるよう、</p>
+        <p>様々なバリエーションをご用意しております。</p>
+        <p>また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。</p>
+        <p>ぜひご注文ください。</p>
+    </body>
+</html>
