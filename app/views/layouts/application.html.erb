@@ -9,7 +9,18 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+        <div>
+            <h1></h1>
+            <% if customer_signed_in? %>
+              <%= link_to "マイページ", customer_path(current_customer), class: 'btn btn-default' %>
+              <%= link_to "商品一覧", items_path, class: 'btn btn-default' %>
+              <%= link_to "カート", new_customer_registration_path, class: 'btn btn-default' %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            <%end%>
+            
+        </div>
+    </header>
   <body>
     <%= yield %>
   </body>

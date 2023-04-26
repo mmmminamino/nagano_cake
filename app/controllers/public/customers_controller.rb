@@ -6,7 +6,7 @@ end
 
 def create
     @customer = Customer.new(customer_params)
-    @customer.user_id = current_user.id
+    @customer.id = current_customer.id
     @customers= Customer.all
     if @customer.save
       redirect_to customers_path
@@ -16,6 +16,7 @@ def create
 end
 
 def show
+    @customer.id = current_customer.id
     @customer=Customer.find(params[:id])
 end
 

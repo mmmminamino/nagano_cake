@@ -1,12 +1,13 @@
+<%= render "public/shared/links" %>
 <body>
   <main>
     <h2>ログイン</h2>
     <h3>会員の方はこちらからログイン</h3>
-    <%= form_with model: @customer do |f| %>
+    <%= form_with model:@customer, url: customer_session_path do |f| %>
         <h4>メールアドレス</h4>
-          <%= f.text_field :email autofocus: true, placeholder:"sample@example.com" %>%>
+          <%= f.text_field :email, autofocus: true, placeholder:"sample@example.com" %>
         <h4>パスワード</h4>
-          <%= f.text_field :encrypted_password %>
+          <%= f.password_field :password %>
         <%= f.submit 'ログイン' %>
     <% end %>
     <h2>会員登録がお済みでない方</h2>

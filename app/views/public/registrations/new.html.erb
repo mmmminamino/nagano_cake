@@ -2,15 +2,7 @@
   <main>
     <h2>新規会員登録</h2>
     
-    <% if @customer.errors.any? %>
-      <%= @customer.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @customer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
+    <%= render "public/shared/error_messages", resource: resource %>
     <%= form_with model: @customer do |f| %>
       <div class="field">
         <%= f.label :名前 %>
@@ -22,7 +14,7 @@
       </div>
       <div class="field">
         <%= f.label :メールアドレス, autofocus: true, placeholder:"sample@example.com" %>
-          <%= f.text_field :email %>
+          <%= f.email_field :email %>
       </div>
       <div class="field">
         <%= f.label :"郵便番号(ハイフンなし)" %>
@@ -38,11 +30,11 @@
       </div>
       <div class="field">
         <%= f.label :"パスワード(6文字以上)" %>
-          <%= f.text_field :encrypted_password %>
+          <%= f.text_field :password %>
       </div>
       <div class="field">
         <%= f.label :"パスワード(確認用)" %>
-          <%= f.text_field :encrypted_password %>
+          <%= f.text_field :password %>
       </div>
         <%= f.submit '新規登録' %>
     <% end %>
