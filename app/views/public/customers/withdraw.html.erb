@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <body>
+        <main>
+            <div>
+                <h4>本当に退会しますか？</h4>
+                <p>
+                    退会すると、会員登録情報や
+                    これまでの購入記録が閲覧できなくなります。
+                    退会する場合は、「退会する」をクリックしてください。
+                </p>
+            </div>
+            <%= form_with model: @customer do |f| %>
+                <%= f.submit '退会しない' %>
+                <%= f.submit '退会する' %>
+            <%end%>
+        </main>
+    </body>
+</html>

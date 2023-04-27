@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <body>
         <main>
+            <div>
+              <%= flash[:notice] %>
+            </div>
             <div>
                 <h3>マイページ</h3>
                 <h3>登録情報</h3><%= link_to "編集する", edit_customer_registration_path, class: 'btn btn-default' %>

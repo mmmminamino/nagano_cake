@@ -1,16 +1,29 @@
-<%= render "public/shared/links" %>
-<body>
-  <main>
-    <h2>ログイン</h2>
-    <h3>会員の方はこちらからログイン</h3>
-    <%= form_with model:@customer, url: customer_session_path do |f| %>
-        <h4>メールアドレス</h4>
-          <%= f.text_field :email, autofocus: true, placeholder:"sample@example.com" %>
-        <h4>パスワード</h4>
-          <%= f.password_field :password %>
-        <%= f.submit 'ログイン' %>
-    <% end %>
-    <h2>会員登録がお済みでない方</h2>
-    　<%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。
-  </main>
-</body>
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+  <%= render "public/shared/links" %>
+    <body>
+      <main>
+        <p id="notice"></p>
+        <h2>ログイン</h2>
+        <h3>会員の方はこちらからログイン</h3>
+        <%= form_with model:@customer, url: customer_session_path do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+            <h4>メールアドレス</h4>
+            <div class="field">
+              <%= f.text_field :email, autofocus: true, placeholder:"sample@example.com" %>
+            </div>
+            <h4>パスワード</h4>
+            <div class="field">
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+            <div class="actions">
+              <%= f.submit 'ログイン' %>
+            </div>
+        <% end %>
+        
+        <h2>会員登録がお済みでない方</h2>
+        　<%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。
+      </main>
+    </body>
+</html>
