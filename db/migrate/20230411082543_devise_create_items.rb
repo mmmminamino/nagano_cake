@@ -2,7 +2,7 @@
 
 class DeviseCreateItems < ActiveRecord::Migration[6.1]
   def change
-    create_table :items do |t|
+    create_table :customer_items do |t|
       ## Database authenticatable
       
       t.string :email,              null: false, default: ""
@@ -27,7 +27,10 @@ class DeviseCreateItems < ActiveRecord::Migration[6.1]
       # t.datetime :confirmed_at
       # t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
-      t.string :name
+      t.string :name, null: false
+      t.string :introduction, null: false
+      t.integer :price, null: false
+      t.integer :genre_id, null: false
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both

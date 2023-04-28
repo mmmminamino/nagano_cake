@@ -1,1 +1,18 @@
-<h1>商品一覧</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+  <main>
+      <body>
+          <div>
+            <h1>商品一覧</h1><p>(全X件)</p>
+            <% if item.image.attached? %>
+                <%= image_tag item.image, size: "100x200" %>
+             <% else %>
+                <%= image_tag 'no_image', size: "100x200" %>
+            <% end %>
+            <p><%= @item.name %></p>
+            <p><%= @item.price %>(税込)</p>
+          </div>
+      </body>
+  </main>
+  <footer><%= paginate items %></footer>

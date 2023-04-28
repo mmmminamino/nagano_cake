@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <body>
+      <main>
+        <div>
+          <% if @list.image.attached? %>
+              <%= image_tag item.image, size: "100x200" %>
+          <% else %>
+              <%= image_tag 'no_image', size: "100x300" %>
+          <% end %>
+          <p><%= @item.name %></p>
+          <p><%= @item.introduction %></p>
+          <p><%= @item.price %>(税込)</p>
+        </div>
+        <div>
+            <%= form_with model:@item do |f| %>
+                <%= f.submit "カートに入れる" %>
+            <% end %>
+        </div>
+      </main>
+    </body>
+</html>
