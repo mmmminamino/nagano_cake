@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'a3777f4b1a151fdee75a176a29f7d428de454f38ae567569b60987540ae580406faad767e64046778c4546a61cfa77cff6a5a5366e51cd425c5c1145f1d96bcf'
+  # config.secret_key = 'a5f3da7dc0f68f2fd81d4baaf03d4304c39c35c130732bf5e277780e54ef21c06964ca8681b311bbd1bca06aea03c937aa51367f0555d393319449377001d4f3'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -38,7 +38,6 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
-
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -47,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  #config.authentication_keys = [:email]
+  # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -127,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'ff992dc11f63ee281d82d48a7e91291aa6f724ceef28d8e6416c04e4d596f01f1f9732984e7932c257d6e467b8f638d56ca0b8d2e7a30bd4f8818de8a0b2e9cb'
+  # config.pepper = 'afe00ed7e2acd11366232ab8d632764c1083e822ea1ec4e919682fda03e485c73844c1abcf162dde76040c51dd626c37bcb4c87908c945d071732e05b7385b3e'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

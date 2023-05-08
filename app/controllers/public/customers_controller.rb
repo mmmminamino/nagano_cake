@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
         @customer.id = current_customer.id
         @customers= Customer.all
         if @customer.save
-          redirect_to customers_path
+          redirect_to customer_path
         else
           render :new
         end
