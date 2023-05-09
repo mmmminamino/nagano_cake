@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -13,7 +14,10 @@ Rails.application.routes.draw do
   
   root to: "homes#top"
   get '/about'=>'homes#about', as:'about'
-  resources :customers, only: [:create, :index, :show, :edit]
+  get '/customers/my_page', to: 'customers#show'
+  get '/customers/information/edit', to: 'customers#edit'
+  patch '/customers/information', to: 'customers#update'
+  resources :customers, only: [:new, :create, :index, :show, :edit]
   resources :items, only: [:new, :create, :index, :show, :edit]
   
   get 'edit/:id' => 'public/customers#edit'
