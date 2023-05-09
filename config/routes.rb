@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   root to: "homes#top"
   get '/about'=>'homes#about', as:'about'
-  get '/customers/my_page', to: 'customers#show'
+  get '/customers/:id', to: 'customers#show'
   get '/customers/information/edit', to: 'customers#edit'
   patch '/customers/information', to: 'customers#update'
   resources :customers, only: [:new, :create, :index, :show, :edit]
