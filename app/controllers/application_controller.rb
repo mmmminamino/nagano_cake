@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     # end
     
     def after_sign_in_path_for(resource)
-        customers_path
+        customer_path(current_customer)
     end
 
     def after_sign_out_path_for(resource)

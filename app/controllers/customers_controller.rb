@@ -1,18 +1,18 @@
 class CustomersController < ApplicationController
-    def new
-      @customer=Customer.new
-    end
+    # def new
+    #   @customer=Customer.new
+    # end
     
-    def create
-      @customer = Customer.new(customer_params)
-      @customer.id = current_customer.id
-      @customers= Customer.all
-      if @customer.save
-        redirect_to customer_path
-      else
-        render :new
-      end
-    end   
+    # def create
+    #   @customer = Customer.new(customer_params)
+    #   @customer.id = current_customer.id
+    #   @customers= Customer.all
+    #   if @customer.save
+    #     redirect_to customer_path
+    #   else
+    #     render :new
+    #   end
+    # end   
     
     def show
       @customer=Customer.find(params[:id])
