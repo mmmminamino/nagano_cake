@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+  get '/admin', to: 'admin#top'
+  resources :admins, only: [:top]
   #devise_for :public_items
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #devise_for :admin_items
