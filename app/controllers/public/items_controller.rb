@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+    has_one_attached :image
     # def new
     #     @item=Item.new
     # end

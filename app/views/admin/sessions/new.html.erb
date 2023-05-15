@@ -5,12 +5,11 @@
   <body>
     <main>
       <h2>ログイン</h2>
-      <%= form_with model:@admin, url: admin_session_path do |f| %>
+      <%= form_with model: @admin, url: new_admin_session_path do |f| %>
         <div class="field">
-          <%= f.label :メールアドレス %><br />
+          <%= f.label :email, 'メールアドレス' %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
-      
         <div class="field">
           <%= f.label :パスワード %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
