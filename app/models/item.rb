@@ -1,2 +1,3 @@
-class Item < ApplicationRecord
+class PublicItem < ApplicationRecord::Base
+    
 end

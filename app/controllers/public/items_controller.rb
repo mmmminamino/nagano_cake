@@ -1,17 +1,17 @@
 class Public::ItemsController < ApplicationController
-
-    def new
-        @item=Item.new
-    end
+    # def new
+    #     @item=Item.new
+    # end
     
-    def create
-        @item = Item.new(item_params)
-        @item.customer_id = current_customer.id
-        @item.save
-        redirect_to items_path
-    end
+    # def create
+    #     @item = Item.new(item_params)
+    #     @item.customer_id = current_customer.id
+    #     @item.save
+    #     redirect_to items_path
+    # end
     
     def index
+        @items = Item.all
         Item.page(params[:page])
     end
     
@@ -27,6 +27,4 @@ class Public::ItemsController < ApplicationController
     def item_params
         params.require(:item).permit(:name, :introduction, :price, :image)  
     end
-　
 end
-

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   get '/admin', to: 'admin#top'
-  resources :admins, only: [:top]
+  resources :admins
   #devise_for :public_items
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #devise_for :admin_items
@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   get '/customers/:id', to: 'customers#show'
   get '/customers/information/edit', to: 'customers#edit'
   patch '/customers/information', to: 'customers#update'
+
   resources :customers, only: [:new, :create, :index, :show, :edit]
-  resources :items, only: [:new, :create, :index, :show, :edit]
+  resources :items, only: [:index, :show, :edit]
   
   get 'edit/:id' => 'public/customers#edit'
   namespace :admin do
