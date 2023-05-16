@@ -7,6 +7,7 @@ class Admin::ItemsController < ApplicationController
     end
     
     def index
+        @search=Item.ransack(params[:q])
         @items=Item.page(params[:page])
     end
     

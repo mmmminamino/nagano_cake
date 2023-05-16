@@ -3,22 +3,47 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <body>
       <main>
-        <div>
-          <h1>商品詳細</h1>
+        <div class="row">
+        <div class="col-xs-4">
+          <h2>商品詳細</h2>
           <% if @item.image.attached? %>
               <%= image_tag item.image, size: "100x200" %>
           <% else %>
               <%= image_tag 'no_image', size: "100x200" %>
           <% end %>
-          <p>商品名<%= @item.name %></p>
-          <p>商品説明<%= @item.introduction %></p>
-          <p>税込価格(税抜価格)<%= @item.price %></p>
-          <p>販売ステータス</p>
         </div>
-        <div>
-            <%= form_with model:@item do |f| %>
-                <%= f.submit "編集する" edit_items_path%>
-            <% end %>
+        
+        <div class="col-xs-8">
+          <table class="table table-hover table-inverse">
+            <tbody>
+              <tr>
+                <td>商品名</td>
+                <td><%= @item.name %></td>
+              </tr>
+              <tr>
+                <td>商品説明</td>
+                <td><%= @item.introduction %></td>
+              </tr>
+              <tr>
+                <td>税込価格</td>
+                <td><%= @item.price %></td>
+              </tr>
+              <tr>
+                <td>販売ステータス</td>
+                <td>
+                <% if item.is_active == false %>
+                販売中
+                <%else%>
+                販売停止中
+                <%end%>
+                </td>
+              <tr>
+            </tbody>
+          </table>
+          <div class="col-md-offset-1 col-md-2 text-right">
+            <%= link_to "編集する" edit_admis_items_path(@item), class: "btn btn-primary" %>
+          </div>
+        </div>
         </div>
       </main>
     </body>

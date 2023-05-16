@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <head></head>
+    <body>
+        <main>
+            <h2>会員情報編集</h2>
+            <%= form_with model: @customer, url: admins_customer_path do |f| %>
+            
+            <table class="table table-hover table-inverse">
+                <tr>
+                    <th class="col-xs-2"><%= f.label :会員ID %></th>
+                    <td class="col-xs-10"><%= f.text_field :id, class:"form-control"%></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :氏名 %></th>
+                    <td><%= f.text_field :last_name, class:"form-control" %><br>
+                    <%= f.text_field :first_name, class:"form-control" %></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :郵便番号 %></th>
+                    <td><%= f.text_field :postal_code, class:"form-control" %></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :住所 %></th>
+                    <td><%= f.text_field :address, class:"form-control" %></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :電話番号 %></th>
+                    <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :メールアドレス %></th>
+                    <td><%= f.text_field :email , class:"form-control"%></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :会員ステータス %></th>
+                    <td><%= f.select :is_customer_status, [["登録済み","false"], ["退会済み","true"]], class:"form-control" %></td>
+                </tr>
+            </table>
+              <div class="row text-right">
+                <%= f.submit "変更を保存する" ,class: "btn btn-success " %>
+              </div>
+            <%end%>
+        </main>
+    </body>

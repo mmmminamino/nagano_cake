@@ -7,12 +7,17 @@ class ApplicationController < ActionController::Base
     # end
     
     def after_sign_in_path_for(resource)
-        customer_path(current_customer)
+        case resource
+         when Admin
+            admin_root_path
+         when Customer
+            root_path
+        end
     end
 
-    def after_sign_out_path_for(resource)
-        about_path
-    end
+    # def after_sign_out_path_for(resource)
+    #     about_path
+    # end
     
     protected
         def configure_permitted_parameters

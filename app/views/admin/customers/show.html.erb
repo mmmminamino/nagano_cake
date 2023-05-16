@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <body>
+        <main>
+            <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h2>会員情報詳細</h2>
+                  <table class="table table-hover table-inverse">
+                    <tr>
+                        <th class="col-xs-2">会員ID</th>
+                        <td class="col-xs-10"><%= @customer.id %>
+                        <% if @customer.is_customer_status == false %>
+                        <span class="label label-primary">
+                            登録済み
+                        </span>
+                        <% else %>
+                        <span class="label label-danger">
+                            退会済み
+                        </span>
+                        <% end %>
+                        </td>
+                    <tr>
+                        <td>氏名</td>
+                        <td><%= @customer.last_name %>
+                        <%= @customer.first_name %> </td>
+                    </tr>
+                    <tr>
+                        <td>カナ</td>
+                        <td><%=@customer.last_name_kana %>
+                        <%= @customer.first_name_kana %> </td>
+                    </tr>
+                    <tr>
+                        <td>郵便番号</td>
+                        <td><%= @customer.postal_code %></td>
+                    </tr>
+                    <tr>
+                        <td>住所</td>
+                        <td><%= @customer.address %></td>
+                    </tr>
+                    <tr>
+                        <td>電話番号</td>
+                        <td><%= @customer.telephone_number %></td>
+                    </tr>
+                    <tr>
+                        <td>メールアドレス</td>
+                        <td><%= @customer.email %></td>
+                    </tr>
+                </table>
+                
+                <div class="row">
+                <%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-default' %>
+                <%= link_to "一覧を見る",  class: 'btn btn-default' %>
+            </div>
+        </main>
+    </body>
+</html>
