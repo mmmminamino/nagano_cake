@@ -4,20 +4,14 @@
     </head>
     <body>
         <header>
-            <%= render 'list' %>
+            <h2 class="admin-homes-top-title">管理者トップ画面</h2>
         </header>
         <main>
-            <table border="0">
-             <th>ジャンル検索</th>
-               <td>ケーキ</td>
-               <td>焼き菓子</td>
-               <td>プリン</td>
-               <td>キャンディ</td>
-            </table>
-            <p>ようこそ、ながのCAKEへ！このサイトは、ケーキのECサイトになります。会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</p>
-            <div>
-                <h3>新着商品</h3>
-                
+            <div class="row admin-homes-top-message">
+                <span class="col-xs-3">注文件数</span>
+                <span class="col-xs-9">
+                    <%= link_to @orders.count, admins_orders_path %>件
+                </span>
             </div>
         </main>
     </body>

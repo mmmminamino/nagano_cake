@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 scope module: 'customers' do
     root 'items#top'
     resources :items, only: [:show, :index]
-    get 'about' => 'homes#about'
+    get 'about' => 'items#about'
    end
   
 
@@ -17,6 +17,7 @@ namespace :public do
     get 'show' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'update' => 'customers#update'
+    get 'withdraw' => 'customers#withdraw'#退会
     get 'orders/about' => 'orders#about', as: 'orders_about'#注文履歴
     post 'orders/confirm' => 'orders#confirm', as: 'confirm_order'#注文情報確認
     get 'orders/thanks' => 'orders#thanks', as: 'thanks_order'#サンクス

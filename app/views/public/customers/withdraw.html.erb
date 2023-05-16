@@ -3,18 +3,19 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <body>
         <main>
-            <div>
+            <div class="row">
+              <div class="col-xs-12">
                 <h4>本当に退会しますか？</h4>
-                <p>
-                    退会すると、会員登録情報や
-                    これまでの購入記録が閲覧できなくなります。
-                    退会する場合は、「退会する」をクリックしてください。
-                </p>
+                <div class="messages">
+                    <p>退会すると、会員登録情報や<br>
+                    これまでの購入記録が閲覧できなくなります。<br>
+                    退会する場合は、「退会する」をクリックしてください
+                    </p>
+                </div>
+                <%= link_to "　退会しない", customers_show_path, class: "glyphicon glyphicon-home btn btn-primary" %>
+                <%= link_to "　退会する　", customers_customers_withdraw_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn btn-danger" %>
+              </div>
             </div>
-            <%= form_with model: @customer do |f| %>
-                <%= f.submit '退会しない' %>
-                <%= f.submit '退会する' %>
-            <%end%>
         </main>
     </body>
 </html>

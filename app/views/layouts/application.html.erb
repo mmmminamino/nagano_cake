@@ -7,24 +7,39 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
-  <body>
-      <header>
-            <div>
-                <h1></h1>
-                  <% if customer_signed_in? %>
-                    <%= link_to "マイページ", customer_path(current_customer), class: 'btn btn-default' %>
-                    <%= link_to "商品一覧", items_path, class: 'btn btn-default' %>
-                    <%= link_to "カート", new_customer_registration_path, class: 'btn btn-default' %>
-                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-                  <%else%>
-                    <%= link_to "About", about_path, class: 'btn btn-default' %>
-                    <%= link_to "商品一覧", items_path, class: 'btn btn-default' %>
-                    <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-default' %>
-                    <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default' %>
-                  <%end%>
-            </div>
-      </header>
-  </body>
-  <%= yield %>
+  <% if customer_signed_in? %>
+    <body  id="wrapper" style="background-color: white; font-family: HiraMinPro-W6; color: #000000;">
+      <div id="header">
+        <%= render "layouts/header" %>
+      </div>
+      <div class="container" style="margin-top: 20px;">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </body>
+  <% elsif admin_signed_in? %>
+    <body id="wrapper" style="background-color: #EEEEEE; font-family: HiraMinPro-W6; color: #000000;">
+      <div id="header">
+        <%= render "layouts/header" %>
+      </div>
+      <div class="container" style="margin-top: 20px;">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </body>
+  <% else %>
+    <body id="wrapper" style="background-color: white; font-family: HiraMinPro-W6; color: #000000; ">
+      <div id="header">
+        <%= render "layouts/header" %>
+      </div>
+      <div class="container" style="margin-top: 20px;">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </body>
+  <% end %>
 </html>
