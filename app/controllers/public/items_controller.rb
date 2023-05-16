@@ -1,26 +1,17 @@
 class Public::ItemsController < ApplicationController
     has_one_attached :image
-    # def new
-    #     @item=Item.new
-    # end
-    
-    # def create
-    #     @item = Item.new(item_params)
-    #     @item.customer_id = current_customer.id
-    #     @item.save
-    #     redirect_to items_path
-    # end
-    
+ 
     def index
-        @items = Item.all
-        Item.page(params[:page])
+        @items=Item.page(params[:page])
+        @items_all = Item.all
     end
     
     def show
         @item=Item.find(params[:id])
+        @cart_item=CartItem.new
     end
     
-    def edit
+    def about
     end
     
     private
