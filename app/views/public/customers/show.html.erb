@@ -3,40 +3,42 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <body>
         <main>
-            <div>
-              <%= flash[:notice] %>
-            </div>
-            <div>
+            <div class="row">
+              <div class="col-xs-12">
                 <h3>マイページ</h3>
-                <h3>登録情報</h3><%= link_to "編集する", edit_customer_registration_path, class: 'btn btn-default' %>
+                <p>
+                    <h3>登録情報</h3>
+                    <%= link_to "編集する", edit_customer_registration_path, class: 'btn btn-default' %>
+                </p>
                 <table border="1">
                     <tr>
-                        <td>氏名</td>
-                        <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+                        <td class="col-xs-2">氏名</td>
+                        <td><%= current_customer.last_name %> <%= current_customer.first_name %></td>
                     </tr>
                     <tr>
                         <td>カナ</td>
-                        <td><%= @customer.first_name_kana %> <%=@customer.last_name_kana %></td>
+                        <td><%= current_customer.last_name_kana %> <%=current_customer.first_name_kana %></td>
                     </tr>
                     <tr>
                         <td>郵便番号</td>
-                        <td><%= @customer.postal_code %></td>
+                        <td><%= current_customer.postal_code %></td>
                     </tr>
                     <tr>
                         <td>住所</td>
-                        <td><%= @customer.address %></td>
+                        <td><%= current_customer.address %></td>
                     </tr>
                     <tr>
                         <td>電話番号</td>
-                        <td><%= @customer.telephone_number %></td>
+                        <td><%= current_customer.telephone_number %></td>
                     </tr>
                     <tr>
                         <td>メールアドレス</td>
-                        <td><%= @customer.email %></td>
+                        <td><%= current_customer.email %></td>
                     </tr>
                 </table>
                 <h3>配送先</h3><%= link_to "一覧を見る",  class: 'btn btn-default' %>
-                <h3>注文履歴</h3><%= link_to "一覧を見る",  class: 'btn btn-default' %>
+                <h3>注文履歴</h3><%= link_to "一覧を見る", customers_orders_path,  class: 'btn btn-default' %>
+              </div>
             </div>
         </main>
     </body>
