@@ -7,7 +7,7 @@
         <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
           
             <div class="row">
-            <%= form_with model: @items, url: admins_items_path do |f| %>
+            <%= form_with model: @items, url: admin_items_path, method: :post do |f| %>
             
             <div class="col-md-5 col-xs-5">
              <h1>商品新規登録</h1>
@@ -33,7 +33,7 @@
                   </tr>
                   <tr>
                     <th>ジャンル</th>
-                    <td><%= select(:item, :role, [["ケーキ"], ["焼き菓子"], ["プリン"]]) %></td>
+                    <td><%= f.collection_select(:genre_id, @genres, :id, :name) %></td>
                   </tr>
                   <tr>
                     <th>販売価格</th>
@@ -41,7 +41,7 @@
                   </tr>
                   <tr>
                     <th>販売ステータス</th>
-                    <td><%= form.check_box :is_active, [["販売中","false"], ["販売停止中","true"]], include_blank: "選択してください" %></td>
+                    <td><%= f.select :is_active, @active, include_blank: "選択してください" %></td>
                   </tr>
                 </tbody>
               </table>

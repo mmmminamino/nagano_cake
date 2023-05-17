@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <main>
+      <body>
+          <div class="row">
+              <div class="col-xs-12">
+                  <h3>注文履歴一覧</h3>
+                  <table class="table table-hover table-inverse">
+                      <tr>
+                          <th>ご注文日</th>
+                          <th>ご注文商品</th>
+                          <th>配送日</th>
+                          <th>お支払料金</th>
+                          <th>ステータス</th>
+                          <th>ご注文詳細</th>
+                      </tr>
+                      <% @orders.each do |order|%>
+                      <tr>
+                          <td class="col-xs-3"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                          <td class="col-xs-2"><%= order.postal_code %>
+                              <%= order.address %>
+                              <%= order.name %>
+                          </td>
+                          <td class="col-xs-1">
+                              <% order.order_items.each do |order_item| %>
+                              <%= order_item.item.name %><br>
+                          <% end %>
+                          </td>
+                          <td class="col-xs-2"><%= order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
+                          <td class="col-xs-2"><%= order.status %></td>
+                          <td><%= link_to "表示する", public_confirm_path(order), class: "btn btn-primary" %></td>
+                      </tr>
+                      <% end %>
+                  </table>
+              </div>
+          </div>
+      </body>
+    </main>
+</html>

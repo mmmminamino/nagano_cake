@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-    has_one_attached :image
+    #has_one_attached :image
     before_action :authenticate_admin!, only: [:create,:edit,:update,:index, :show, :new]
     
     def show
@@ -8,21 +8,24 @@ class Admin::ItemsController < ApplicationController
     
     def index
         @search=Item.ransack(params[:q])
-        @items=Item.page(params[:page])
+        @items=@search.result.page(params[:page]).per(10)
     end
     
 
     def new
         @items=Item.new
+        @genre=[["ケーキ"], ["焼き菓子"], ["プリン"]]
+        @genres=Genre.all
+        @active=[["販売中","false"], ["販売停止中","true"]]
     end
     
     def create
         @item = Item.new(item_params)
-        @item.customer_id = current_customer.id
-        if @item.save
-            redirect_to admins_items_path(@item)
+        #@item.customer_id = current_customer.id
+        if @item.save!
+            redirect_to admin_items_path(@item)
         else
-            redirect_to new_admins_item_path
+            redirect_to new_admin_item_path
         end
     end
 
@@ -40,10 +43,8 @@ class Admin::ItemsController < ApplicationController
         end
     end
     
-    private
-    
+private
     def item_params
-        params.require(:item).permit(:name, :introduction, :price, :image, :is_active)  
+        params.require(:item).permit(:name, :introduction, :price, :image, :is_active, :genre_id)  
     end
-　
 end

@@ -14,12 +14,14 @@ class Admin::SessionsController < Devise::SessionsController
         #   end
         
     def new
+      @admin=Admin.new
     end
 
     def create
-        admin = Admin.find_by(email: params[:session][:email].downcase)
-        if admin && admin.authenticate(params[:session][:password])
-          sign_in_admin admin
+        admin = Admin.find_by(email: params[:admin][:email].downcase)
+        #binding.pry
+        if admin && admin.valid_password?(params[:admin][:password])
+          sign_in admin
           redirect_to admin_root_path
         else
           flash.now[:danger] = 'Invalid email/password combination'

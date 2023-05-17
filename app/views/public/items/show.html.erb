@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
-    <body>
-      <main>
-        <div>
-          <% if @item.image.attached? %>
-              <%= image_tag item.image, size: "100x200" %>
-          <% else %>
-              <%= image_tag 'no_image', size: "100x300" %>
-          <% end %>
-          <p><%= @item.name %></p>
-          <p><%= @item.introduction %></p>
-          <p><%= @item.price %>(税込)</p>
+    <main>
+      <body>
+        <div class="row">
+          <div class="col-xs-2">
+            <%= render 'customers/items/genre', genres: @genres %>
+          </div><br>
+          
+          <div class="col-xs-5">
+            <%= form_with model: @cart_item, url: customers_cart_items_path(item_id: @item), method: :post do |f| %>
+            <p><%= @item.name %></p>
+            <p><%= @item.introduction %></p>
+            <p><%= @item.price %>(税込)</p>
+          </div>
         </div>
-        <div>
-            <%= form_with model:@item do |f| %>
-                <%= f.submit "カートに入れる" %>
+        <div class="row">
+          <div class="col-xs-2">
+          </div>
+          <div class="col-xs-5">
+            <p class="item-content2", style="font-family: arial black">
+              <%= ((@item.price).floor).to_s(:delimited, delimiter: ',') %> (税込)
+              <span>　　</span>
+              <%= form.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+            </p>
+          </div>
+          <div class="col-xs-5">
+            <p><%= form.submit "カートに入れる", class:"btn btn-primary" %></p>
+          </div>
             <% end %>
+          </div>
         </div>
-      </main>
-    </body>
+      </body>
+    </main>
 </html>

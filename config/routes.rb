@@ -5,24 +5,26 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+  root to: "public/items#top"
+
 scope module: 'customers' do
-    root 'items#top'
     resources :items, only: [:show, :index]
     get 'about' => 'items#about'
    end
   
 
 namespace :public do
+    resources :genres, only: [:show]
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     get 'show' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'update' => 'customers#update'
     get 'withdraw' => 'customers#withdraw'#退会
-    get 'orders/about' => 'orders#about', as: 'orders_about'#注文履歴
-    post 'orders/confirm' => 'orders#confirm', as: 'confirm_order'#注文情報確認
+    get 'orders/about' => 'orders#about', as: 'orders_about'#注文情報入力
+    # post 'orders/confirm' => 'orders#new', as: 'confirm_order'#注文情報確認
     get 'orders/thanks' => 'orders#thanks', as: 'thanks_order'#サンクス
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]#注文情報確認、注文履歴一覧、注文履歴詳細
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resource :customers, only: [:show, :edit, :update]
     delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
@@ -51,7 +53,7 @@ namespace :public do
   sessions: "admin/sessions"
 }
   
-  namespace :admins do
+  namespace :admin do
     root :to => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:show, :index, :new, :create, :edit, :update]
