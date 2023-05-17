@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+    before_action :authenticate_customer!, only: [:create,:index, :show, :new]
     
     def top
         @genres=Genre.all
@@ -6,13 +7,16 @@ class Public::ItemsController < ApplicationController
     end
  
     def index
-        @items=Item.page(params[:page])
+        @search=Item.ransack(params[:q])
+        @items=@search.result.page(params[:page]).per(10)
         @items_all = Item.all
+        @genres=Genre.all
     end
     
     def show
         @item=Item.find(params[:id])
         @cart_item=CartItem.new
+        @genres=Genre.all
     end
     
     def about
@@ -21,6 +25,6 @@ class Public::ItemsController < ApplicationController
     private
     
     def item_params
-        params.require(:item).permit(:name, :introduction, :price, :image)  
+        params.require(:item).permit(:name, :introduction, :price, :image, :is_active, :genre_id)  
     end
 end

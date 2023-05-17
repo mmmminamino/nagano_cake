@@ -3,7 +3,7 @@
     <h2>新規会員登録</h2>
     
     <%= render "public/shared/error_messages", resource: resource %>
-    <%= form_with model: @customer do |f| %>
+    <%= form_with model: @customer,url: new_customer_registration_path do |f| %>
       <div class="field">
         <%= f.label :名前 %>
           <p>(姓)</p><%= f.text_field :last_name, autofocus: true, placeholder:"令和" %><p>(名)</p><%= f.text_field :first_name, autofocus: true, placeholder:"道子" %>

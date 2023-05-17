@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  devise_scope :customer do
+    post '/customers/sign_up', to: 'public/registrations#create', as: 'custom_registration'
+  end
+    
+
 
   root to: "public/items#top"
 
-scope module: 'customers' do
+  scope module: 'customers' do
     resources :items, only: [:show, :index]
     get 'about' => 'items#about'
    end
@@ -26,7 +31,7 @@ namespace :public do
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :create, :index, :show]#注文情報確認、注文履歴一覧、注文履歴詳細
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:new, :create, :show, :edit, :update]
     delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
   end
@@ -58,6 +63,6 @@ namespace :public do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:show, :index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
-    resources :order_details, only: [:update]
+    resources :order_items, only: [:update]
   end
 end

@@ -5,30 +5,60 @@
       <body>
         <div class="row">
           <div class="col-xs-2">
-            <%= render 'customers/items/genre', genres: @genres %>
+            <%= render 'public/items/genre', genres: @genres %>
           </div><br>
           
-          <div class="col-xs-5">
-            <%= form_with model: @cart_item, url: customers_cart_items_path(item_id: @item), method: :post do |f| %>
-            <p><%= @item.name %></p>
-            <p><%= @item.introduction %></p>
-            <p><%= @item.price %>(税込)</p>
-          </div>
+          <table class="table table-hover table-inverse">
+            <tbody>
+              <tr>
+                <td>商品名</td>
+                <td><%= @item.name %></td>
+              </tr>
+              <tr>
+                <td>商品説明</td>
+                <td><%= @item.introduction %></td>
+              </tr>
+              <tr>
+                <td>税込価格</td>
+                <td><%= @item.price %></td>
+              </tr>
+              <tr>
+                <td>商品画像</td>
+                <td>
+                  <% if @item.image.attached? %>
+                    <%= image_tag @item.image, size: "300x200" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "300x200" %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>販売ステータス</td>
+                <td>
+                  <% if @item.is_active == false %>
+                    販売中
+                  <% else %>
+                    販売停止中
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="row">
           <div class="col-xs-2">
           </div>
           <div class="col-xs-5">
+            <%= form_with model: @item do |f| %>
             <p class="item-content2", style="font-family: arial black">
-              <%= ((@item.price).floor).to_s(:delimited, delimiter: ',') %> (税込)
+              ¥<%= ((@item.price).floor).to_s(:delimited, delimiter: ',') %> (税込)
               <span>　　</span>
-              <%= form.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+              <%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
             </p>
+            <%end%>
           </div>
           <div class="col-xs-5">
-            <p><%= form.submit "カートに入れる", class:"btn btn-primary" %></p>
-          </div>
-            <% end %>
+            <p><%= link_to "カートに入れる", {url: public_cart_items_path}, class: "btn btn-primary" %></p>
           </div>
         </div>
       </body>

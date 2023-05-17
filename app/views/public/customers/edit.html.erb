@@ -3,6 +3,18 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <head></head>
     <body>
+        <header>
+              <div class="row">
+                  <%= render "layouts/header" %>
+              </div>
+              <div class="pull-right" style="margin-bottome: 10px;">
+                <%= search_field(@search, url:public_items_path) do |f| %>
+                  <%= f.label :name, "キーワード" %>
+                  <%= f.search_field :name_cont %>
+                  <%= f.submit %>
+                <% end %>
+              </div>
+            </header>
         <main>
             <div class="row">
                 <div class="col-xs-12">

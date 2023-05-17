@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
          has_one_attached :image
          
     def active_for_authentication?
-      super && (self.is_customer_status == false)
+      super && (self.is_deleted == false)
     end
     
        validates :last_name,  presence: true
