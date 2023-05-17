@@ -5,15 +5,15 @@
       <body>
         <div class="row">
         <div class="col-xs-2">
-          <%= render 'customers/items/sidebar', genres: @genres %>
+          <%= render 'public/items/genre', genres: @genres %>
         </div>
         <br>
         
           <h2>商品詳細</h2>
           <% if @item.image.attached? %>
-              <%= image_tag item.image, size: "100x200" %>
+              <%= image_tag @item.image, size: "300x200" %>
           <% else %>
-              <%= image_tag 'no_image', size: "100x200" %>
+              <%= image_tag 'no_image', size: "300x200" %>
           <% end %>
         </div>
         
@@ -35,7 +35,7 @@
               <tr>
                 <td>販売ステータス</td>
                 <td>
-                <% if item.is_active == false %>
+                <% if @item.is_active == false %>
                 販売中
                 <%else%>
                 販売停止中
@@ -45,7 +45,7 @@
             </tbody>
           </table>
           <div class="col-md-offset-1 col-md-2 text-right">
-            <%= link_to "編集する" edit_admis_items_path(@item), class: "btn btn-primary" %>
+            <%= link_to "編集する" ,edit_admin_item_path(@item), class: "btn btn-primary" %>
           </div>
         </div>
         </div>

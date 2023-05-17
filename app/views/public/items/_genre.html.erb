@@ -13,13 +13,11 @@
                   </td>
               </tr>
               <% genres.each do |genre| %>
-              <% if genre.is_genres_status == true %>
                   <tr>
                       <td>
-                          <%= link_to genre.name, customers_genre_path(genre.id), class:"ec-genre-list-item"%>
+                          <%= link_to genre.name, public_genre_path(genre.id), class:"ec-genre-list-item"%>
                       </td>
                   </tr>
-              <%end%>
               <%end%>
           </table>
       </body>

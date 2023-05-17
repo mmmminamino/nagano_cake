@@ -1,5 +1,9 @@
 class Public::ItemsController < ApplicationController
-    has_one_attached :image
+    
+    def top
+        @genres=Genre.all
+        @items = Item.all
+    end
  
     def index
         @items=Item.page(params[:page])

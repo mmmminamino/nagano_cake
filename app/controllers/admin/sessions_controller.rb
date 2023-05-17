@@ -30,7 +30,7 @@ class Admin::SessionsController < Devise::SessionsController
     end
     
     def destroy
-        sign_out_admin
+        reset_session
         redirect_to new_admin_session_path
     end
       
