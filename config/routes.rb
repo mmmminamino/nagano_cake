@@ -20,11 +20,11 @@ Rails.application.routes.draw do
 
 namespace :public do
     resources :genres, only: [:show]
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'#退会
     get 'show' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'update' => 'customers#update'
-    get 'withdraw' => 'customers#withdraw'#退会
+    get 'quit' => 'customers#quit'#退会画面
     get 'orders/about' => 'orders#about', as: 'orders_about'#注文情報入力
     # post 'orders/confirm' => 'orders#new', as: 'confirm_order'#注文情報確認
     get 'orders/thanks' => 'orders#thanks', as: 'thanks_order'#サンクス

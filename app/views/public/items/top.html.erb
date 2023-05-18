@@ -29,7 +29,7 @@
                     <div class="item--card-content">
                         <% @items.each do |item| %>
                             <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
-                                <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+                                <%= link_to public_item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
                                     <%= image_tag item.image, size: '300x200',fallback: "no_image.jpg" %><br>
                                     <%= item.name %><br>
                                     ¥<%= item.price.to_s(:delimited, delimiter: ',') %>

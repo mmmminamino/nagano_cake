@@ -2,10 +2,15 @@
 <html lang="ja">
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <head></head>
-    <body>
-        <main>
+    <main>
+        <header>
+              <div class="row">
+                  <%= render "layouts/header" %>
+              </div>
+        </header>
+        <body>
             <h2>会員情報編集</h2>
-            <%= form_with model: @customer, url: admins_customer_path do |f| %>
+            <%= form_with model: @customer, url: admin_customer_path do |f| %>
             
             <table class="table table-hover table-inverse">
                 <tr>
@@ -42,5 +47,6 @@
                 <%= f.submit "変更を保存する" ,class: "btn btn-success " %>
               </div>
             <%end%>
-        </main>
-    </body>
+        </body>
+    </main>
+</html>

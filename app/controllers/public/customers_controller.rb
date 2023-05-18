@@ -27,7 +27,7 @@ class Public::CustomersController < ApplicationController
       @customer=current_customer
       if @customer.update(customer_params)
         flash[:success] ="登録情報を変更しました"
-        redirect_to customer_path(@customer.id)
+        redirect_to public_show_path(@customer.id)
       else
         render:edit
       end

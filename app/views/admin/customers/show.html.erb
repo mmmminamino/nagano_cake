@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
-    <body>
-        <main>
+    <main>
+        <header>
+              <div class="row">
+                  <%= render "layouts/header" %>
+              </div>
+        </header>
+        <body>
             <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <h2>会員情報詳細</h2>
@@ -10,7 +15,7 @@
                     <tr>
                         <th class="col-xs-2">会員ID</th>
                         <td class="col-xs-10"><%= @customer.id %>
-                        <% if @customer.is_customer_status == false %>
+                        <% if @customer.is_deleted == false %>
                         <span class="label label-primary">
                             登録済み
                         </span>
@@ -49,9 +54,9 @@
                 </table>
                 
                 <div class="row">
-                <%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-default' %>
-                <%= link_to "一覧を見る",  class: 'btn btn-default' %>
+                <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-default' %>
+                <%= link_to "一覧を見る", admin_customers_path, class: 'btn btn-default' %>
             </div>
-        </main>
-    </body>
+        </body>
+    </main>
 </html>

@@ -2,8 +2,13 @@
 <html lang="ja">
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
 <!--%= render "admin/shared/links" % -->
-  <body>
-    <main>
+  <main>
+    <header>
+              <div class="row">
+                  <%= render "layouts/header" %>
+              </div>
+    </header>
+    <body>
       <div class="container">
         <h2>管理者ログイン</h2>
         <%= form_with model: @admin, url: new_admin_session_path do |f| %>
@@ -26,5 +31,5 @@
           <% end %>
         <% end %>
       </div>
-    </main>
-  </body>
+    </body>
+  </mains>
