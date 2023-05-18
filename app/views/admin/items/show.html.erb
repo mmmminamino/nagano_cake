@@ -6,13 +6,6 @@
         <div class="row">
           <%= render "layouts/header" %>
         </div>
-        <div class="pull-right" style="margin-bottome: 10px;">
-          <%= search_field(@search, url:public_items_path) do |f| %>
-            <%= f.label :name, "キーワード" %>
-            <%= f.search_field :name_cont %>
-            <%= f.submit %>
-          <% end %>
-         </div>
       </header>
       <body>
         <div class="row">

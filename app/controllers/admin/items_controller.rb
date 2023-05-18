@@ -33,15 +33,17 @@ class Admin::ItemsController < ApplicationController
 
     def edit
         @item=Item.find(params[:id])
+        @genre=[["ケーキ"], ["焼き菓子"], ["プリン"]]
+        @active=[["販売中","false"], ["販売停止中","true"]]
     end
     
     def update
         @item=Item.find(params[:id])
         if @item.update(item_params)
-            redirect_to admins_items_path(@item)
+            redirect_to admin_items_path(@item)
             flash[:notice_update]="商品情報を更新しました"
         else
-            redirect_to edit_admins_items_path(@item)
+            redirect_to edit_admin_items_path(@item)
         end
     end
     
