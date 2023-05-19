@@ -40,6 +40,12 @@ body{
     text-align: left;
 }
 
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .navbar{
     position: relative;
     display: flex;
@@ -63,6 +69,7 @@ ul{
 li {
     display: list-item;
     text-align: -webkit-match-parent;
+    white-space: nowrap;
 }
 
 .navbar-nav{
@@ -71,4 +78,40 @@ li {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+}
+
+.collapse:not(.show) {
+    display: none;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus {
+    text-decoration: none;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: 50% / 100% 100% no-repeat;
 }
