@@ -15,7 +15,7 @@ class Public::CartItemsController < ApplicationController
         @genres=Genre.all
         if @cart_item.save
             flash[:notice]="#{@cart_item.item.name}をカートに追加しました"
-            redirect_to customers_cart_items_path
+            redirect_to public_cart_items_path
         else
             flash[:alert]="個数を選択してください"
             render "public/items/show"
@@ -45,6 +45,6 @@ class Public::CartItemsController < ApplicationController
     private
     
      def cart_item_params
-        params.require(:cart_item).permit(:amount, :item_id, :customer_id)
+        params.require(:cart_item).permit(:amount, :item_id, :customer_id, :count)
      end
 end

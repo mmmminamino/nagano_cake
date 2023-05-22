@@ -9,12 +9,12 @@
           <div class="list-body">
               <%= form_with(url: customers_orders_path, method: :post) do |form| %>
                   <h3>支払方法</h3>
-                  <span>　　　</span><%= form.radio_button :method, 0, checked: "checked" %>
-                  <%= form.label :クレジットカード %><br>
-                  <span>　　　</span><%= form.radio_button :method, 1 %>
-                  <%= form.label :銀行振込 %>
+                  <span>　　　</span><%= form.radio_button :payment_method, Order.payment_methods.key(0) %>
+                  <%= form.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+                  <span>　　　</span><%= form.radio_button :payment_method, Order.payment_methods.key(1) %>
+                  <%= form.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
                   <h3>お届け先</h3>
-                  <span>　　　</span><%= form.radio_button :a_method, 0, checked: "checked" %>
+                  <span>　　　</span><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
                   <%= form.label :ご自身の住所 %><br>
                   <%= @customer.address %><br>
                   <span>　　　　　</span><%= @customer.last_name %>
