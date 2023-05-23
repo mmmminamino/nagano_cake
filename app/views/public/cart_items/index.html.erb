@@ -25,10 +25,10 @@
                                   <td class="col-xs-3"><%= cart_item.item.name %></td>
                                   <td class="col-xs-2">¥<%= ((cart_item.item.price).floor).to_s(:delimited, delimiter: ',') %></td>
                                   <td class="col-xs-1">
-                                      <%= form_with model: @cart_items, url: public_cart_item_path(cart_item) do |f| %>
+                                      <%= form_for(cart_item, url: public_cart_item_path(cart_item)) do |f| %>
                                           <p>
-                                              <%= c.number_field :amount, min:1, max:10000, step:1 %>
-                                              <%= c.submit "変更する", class: "btn btn-primary" %>
+                                              <%= f.number_field :amount, min:1, max:10000, step:1 %>
+                                              <%= f.submit "変更する", class: "btn btn-primary" %>
                                           </p>
                                       <%end%>
                                   </td>
@@ -36,7 +36,7 @@
                                       ¥<%= ((cart_item.item.price * cart_item.amount * 1.1).floor).to_s(:delimited, delimiter: ',') %>
                                   </td>
                                   <td class="col-xs-1">
-                                      <%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+                                      <%= link_to "削除する", public_cart_items_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
                                   </td>
                               </tr>
                           <%end%>
@@ -45,7 +45,7 @@
               </div>
           </div>
           <div class="col-xs-8">
-              <%= link_to "お買い物を続ける", public_item_path, class: "btn btn-primary", data: {"turbolinks" => false} %>
+              <%= link_to "お買い物を続ける", root_path, class: "btn btn-primary", data: {"turbolinks" => false} %>
           </div>
           <div class="col-xs-4">
               <table class="table table-bordered">

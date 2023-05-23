@@ -3,9 +3,6 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <main>
         <header>
-            <div class="row">
-              <%= render "layouts/header" %>
-            </div>
             <div class="pull-right" style="margin-bottome: 10px;">
               <%= search_field(@search, url:public_items_path) do |f| %>
                 <%= f.label :name, "キーワード" %>
@@ -24,7 +21,6 @@
                                <th>商品名</th>
                                <th></th>
                                <th>税込価格</th>
-                               <th>ジャンル</th>
                                <th>ステータス</th>
                             </tr>
                         </thead>

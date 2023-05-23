@@ -37,11 +37,9 @@
                     <td><%= f.text_area :introduction, class: "form-control" %></td>
                   </tr>
                   <tr>
-                    <th>ジャンル</th>
-                    <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "選択してください" %></td>
-                  </tr>
                     <th>販売価格</h4>
                     <td><%= f.text_field :price, class: "form-control" %></th>
+                  </tr>
                   <tr>
                     <th>販売ステータス</th>
                     <td><%= f.select :is_active, @active, include_blank: "選択してください" %></td>

@@ -9,11 +9,6 @@
       </header>
       <body>
         <div class="row">
-        <div class="col-xs-2">
-          <%= render 'public/items/genre', genres: @genres %>
-        </div>
-        <br>
-        
           <h2>商品詳細</h2>
           <% if @item.image.attached? %>
               <%= image_tag @item.image, size: "300x200" %>

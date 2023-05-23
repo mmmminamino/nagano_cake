@@ -44,10 +44,6 @@
                     <td><%= f.text_area :introduction %></td>
                   </tr>
                   <tr>
-                    <th>ジャンル</th>
-                    <td><%= f.collection_select(:genre_id, @genres, :id, :name) %></td>
-                  </tr>
-                  <tr>
                     <th>販売価格</th>
                     <td><%= f.text_field :price %></td>
                   </tr>

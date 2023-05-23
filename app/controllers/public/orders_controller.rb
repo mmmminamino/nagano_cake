@@ -1,10 +1,14 @@
 class Public::OrdersController < ApplicationController
     before_action :authenticate_customer!
     
-    def about #注文履歴
+    def about #注文情報入力
       @order=Order.new
       @customer=current_customer
-      @addresses=ShippingAddress.where(customer_id: current_customer.id)
+      @addresses=Address.where(customer_id: current_customer.id)
+    end
+    
+    def address_display
+      '〒' + postal_code + ' ' + address + ' ' + name
     end
     
     def create

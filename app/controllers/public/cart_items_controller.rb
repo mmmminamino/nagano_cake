@@ -3,20 +3,23 @@ class Public::CartItemsController < ApplicationController
     
     def index
         @cart_items=current_customer.cart_items
-        @total_price=@cart_items.sum{|cart_item|cart_item.item.price * cart_item.quantity}
-        @genres=Genre.all
-        @item=Item.find(params[:id])
+        @total_price=@cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount}
+        # @genres=Genre.all
+        # @item=Item.find(params[:id])
     end
     
     def create
-        @cart_item=CartItem.new(cart_item_params)
+        # @item=Item.find(params[:id])
+        @cart_item = CartItem.new(cart_item_params)
+        # @cart_item=CartItem.new(item_id: (params[:cart_item][:item_id]), amount: params[:cart_item][:amount])
         @cart_item.customer_id=current_customer.id
-        @cart_item.item_id=params[:item_id]
-        @genres=Genre.all
-        if @cart_item.save
+        # @cart_item.item_id=params[:item_id]
+        # @genres=Genre.all
+        if @cart_item.save!
             flash[:notice]="#{@cart_item.item.name}をカートに追加しました"
             redirect_to public_cart_items_path
         else
+            @item=Item.find(params[:cart_item][:item_id])
             flash[:alert]="個数を選択してください"
             render "public/items/show"
         end
@@ -26,6 +29,10 @@ class Public::CartItemsController < ApplicationController
         @cart_item=CartItem.find(params[:id])
         @cart_item.update(cart_item_params)
         redirect_to public_cart_items_path
+    end
+    
+    def with_tax_price
+        (price * 1.1).floor
     end
     
     def destroy
@@ -45,6 +52,7 @@ class Public::CartItemsController < ApplicationController
     private
     
      def cart_item_params
-        params.require(:cart_item).permit(:amount, :item_id, :customer_id, :count)
+        params.require(:cart_item).permit(:item_id, :amount)
      end
+
 end
