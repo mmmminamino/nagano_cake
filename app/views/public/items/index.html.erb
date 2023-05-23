@@ -33,7 +33,6 @@
                                       <%= link_to(image_tag(item.image, size: "300x200"), public_item_path(item)) %>
                                     </td>
                                     <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
-                                    <td><%= item.genre.name %></td>
                                     <td>
                                         <% if item.is_active == false %>
                                             販売中

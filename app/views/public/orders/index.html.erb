@@ -29,7 +29,7 @@
                           </td>
                           <td class="col-xs-2"><%= order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
                           <td class="col-xs-2"><%= order.status %></td>
-                          <td><%= link_to "表示する", public_confirm_path(order), class: "btn btn-primary" %></td>
+                          <td><%= link_to "表示する", public_order_path(order), class: "btn btn-primary" %></td>
                       </tr>
                       <% end %>
                   </table>

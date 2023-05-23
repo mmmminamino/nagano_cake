@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 namespace :public do
     # resources :genres, only: [:show]
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'#退会
-    get 'show' => 'customers#show'
+    get '/my_page', to: 'customers#show', as: 'my_page'#マイページ
+    resources :my_page, only: [:show]
     get 'customers/edit' => 'customers#edit'
     patch 'update' => 'customers#update'
     get 'quit' => 'customers#quit'#退会画面
@@ -31,7 +32,7 @@ namespace :public do
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :create, :index, :show]#注文情報確認、注文履歴一覧、注文履歴詳細
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :customers, only: [:new, :create, :show, :edit, :update]
+    # resources :customers, only: [:new, :create, :edit, :update]
     delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
   end
