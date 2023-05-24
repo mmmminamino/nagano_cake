@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
     def show
         @item=Item.find(params[:id])
         @cart_item = CartItem.new
-        @genres=Genre.all
+        # @genres=Genre.all
     end
     
     def index
@@ -16,8 +16,8 @@ class Admin::ItemsController < ApplicationController
 
     def new
         @items=Item.new
-        @genre=[["ケーキ"], ["焼き菓子"], ["プリン"]]
-        @genres=Genre.all
+        # @genre=[["ケーキ"], ["焼き菓子"], ["プリン"]]
+        # @genres=Genre.all
         @active=[["販売中","false"], ["販売停止中","true"]]
     end
     
@@ -33,7 +33,6 @@ class Admin::ItemsController < ApplicationController
 
     def edit
         @item=Item.find(params[:id])
-        @genre=[["ケーキ"], ["焼き菓子"], ["プリン"]]
         @active=[["販売中","false"], ["販売停止中","true"]]
     end
     
@@ -49,6 +48,6 @@ class Admin::ItemsController < ApplicationController
     
 private
     def item_params
-        params.require(:item).permit(:name, :introduction, :price, :image, :is_active, :genre_id)  
+        params.require(:item).permit(:name, :introduction, :price, :image, :is_active)  
     end
 end

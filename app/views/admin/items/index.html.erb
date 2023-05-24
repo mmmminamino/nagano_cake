@@ -3,9 +3,6 @@
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
     <main>
         <header>
-            <div class="row">
-              <%= render "layouts/header" %>
-            </div>
             <div class="pull-right" style="margin-bottome: 10px;">
               <%= search_field(@search, url:public_items_path) do |f| %>
                 <%= f.label :name, "キーワード" %>
@@ -37,7 +34,6 @@
                                     <td><%= item.id %></td>
                                     <td><%= link_to item.name, admin_item_path(item) %></td>
                                     <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
-                                    <td><%= item.genre.name %></td>
                                     <td>
                                         <% if item.is_active == false %>
                                             販売中
