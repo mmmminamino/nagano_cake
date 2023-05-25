@@ -62,8 +62,9 @@ namespace :public do
   namespace :admin do
     root :to => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :items, only: [:show, :index, :new, :create, :edit, :update]
+    resources :items, only: [:show, :index, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:index, :show, :update]
     resources :order_items, only: [:update]
+    delete 'items'=> 'items#destroy'
   end
 end

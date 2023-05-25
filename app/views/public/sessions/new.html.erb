@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
-  <%= render "public/shared/links" %>
     <body>
       <main>
         <p id="notice"></p>
@@ -10,11 +9,11 @@
           <h3>会員の方はこちらからログイン</h3>
           <%= form_with model:@customer, url: customer_session_path do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-              <h4>メールアドレス</h4>
+              <p>メールアドレス</p>
               <div class="field">
                 <%= f.text_field :email, autofocus: true, placeholder:"sample@example.com" %>
               </div>
-              <h4>パスワード</h4>
+              <p>パスワード</p>
               <div class="field">
                 <%= f.password_field :password, autocomplete: "new-password" %>
               </div>

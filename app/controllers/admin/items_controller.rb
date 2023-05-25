@@ -46,6 +46,13 @@ class Admin::ItemsController < ApplicationController
         end
     end
     
+    def destroy
+        @item=Item.find(params[:id])
+        @item.destroy
+        flash.now[:alert]="#{@item.name}を削除しました"
+        redirect_to admin_items_path
+    end
+    
 private
     def item_params
         params.require(:item).permit(:name, :introduction, :price, :image, :is_active)  
